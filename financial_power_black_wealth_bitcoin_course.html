@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Power & Black Community Wealth Through Bitcoin — BWS Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #080F1E;
+  --navy-mid: #0D1829;
+  --navy-card: #111F35;
+  --navy-lift: #172440;
+  --gold: #C9A030;
+  --gold-bright: #E8BE50;
+  --gold-dim: rgba(201,160,48,0.12);
+  --gold-border: rgba(201,160,48,0.28);
+  --white: #F2EDE4;
+  --white-dim: rgba(242,237,228,0.55);
+  --white-faint: rgba(242,237,228,0.07);
+  --green: #3DBF7A;
+  --red: #E05050;
+  --amber: #E07830;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* GRAIN */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.4;
+}
+
+/* PROGRESS BAR */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(8,15,30,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gold-border);
+  z-index: 100;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+.nav-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+}
+.nav-score {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--white-dim);
+  letter-spacing: 0.08em;
+}
+.nav-score span {
+  color: var(--gold-bright);
+  font-weight: 500;
+}
+
+/* HERO */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--navy));
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,160,48,0.09) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  opacity: 0.85;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+.hero h1 .gold-line {
+  color: var(--gold);
+  display: block;
+}
+.hero-sub {
+  font-size: 1rem;
+  color: var(--white-dim);
+  max-width: 520px;
+  margin: 1.6rem auto 2.8rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.meta-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--white-dim);
+  border: 1px solid var(--gold-border);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+}
+
+/* CHAPTER RIBBON */
+.chapter-ribbon {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 1.2rem 2rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.chapter-dot {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: var(--white-dim);
+  padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(242,237,228,0.12);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.chapter-dot:hover { border-color: var(--gold); color: var(--gold); }
+.chapter-dot.active { background: var(--gold-dim); border-color: var(--gold); color: var(--gold-bright); }
+
+/* MAIN LAYOUT */
+.course-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+/* SECTION */
+.section {
+  padding: 5rem 0 3rem;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.section.visible { opacity: 1; transform: none; }
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 1.6rem;
+}
+.section-title .accent { color: var(--gold); }
+.section-divider {
+  width: 48px; height: 2px;
+  background: var(--gold);
+  margin-bottom: 2.2rem;
+}
+
+/* BODY TEXT */
+.body-text {
+  color: var(--white-dim);
+  font-weight: 300;
+  margin-bottom: 1.4rem;
+  font-size: 0.97rem;
+}
+.body-text strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* CALLOUT */
+.callout {
+  border-left: 3px solid var(--gold);
+  background: var(--gold-dim);
+  padding: 1.2rem 1.6rem;
+  margin: 2rem 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout p {
+  font-size: 1.02rem;
+  color: var(--white);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.card {
+  background: var(--navy-card);
+  border: 1px solid var(--gold-border);
+  padding: 1.4rem;
+  border-radius: 4px;
+}
+.card-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.7rem;
+}
+.card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.card-text {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* PROFILE CARD */
+.profile-card {
+  background: var(--navy-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  padding: 1.8rem;
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.profile-icon {
+  font-size: 2.4rem;
+  flex-shrink: 0;
+}
+.profile-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.profile-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--white-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin: 2rem 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--gold-border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.2rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.4rem; top: 0.45rem;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--navy);
+}
+.timeline-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.timeline-text {
+  font-size: 0.9rem;
+  color: var(--white-dim);
+  font-weight: 300;
+}
+
+/* BITCOIN FEATURES */
+.btc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+@media (max-width: 600px) { .btc-grid { grid-template-columns: 1fr; } }
+.btc-feature {
+  background: var(--navy-card);
+  border: 1px solid var(--gold-border);
+  padding: 1.4rem;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.btc-feature::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+}
+.btc-feature-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-bright);
+  margin-bottom: 0.5rem;
+}
+.btc-feature-text {
+  font-size: 0.84rem;
+  color: var(--white-dim);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* QUIZ */
+.quiz-block {
+  background: var(--navy-mid);
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  padding: 2.2rem;
+  margin: 3rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.quiz-block::before {
+  content: 'KNOWLEDGE CHECK';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: var(--gold-dim);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 0.5rem 1.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.quiz-block-inner { margin-top: 1rem; }
+.quiz-q {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--white-faint);
+}
+.quiz-q:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.quiz-q-text {
+  font-size: 0.95rem;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  line-height: 1.55;
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.quiz-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.75rem 1rem;
+  background: var(--white-faint);
+  border: 1px solid rgba(242,237,228,0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 0.87rem;
+  color: var(--white-dim);
+  line-height: 1.45;
+}
+.quiz-option:hover:not(.locked) {
+  border-color: var(--gold-border);
+  color: var(--white);
+  background: var(--gold-dim);
+}
+.quiz-option.selected { border-color: var(--gold); background: var(--gold-dim); color: var(--white); }
+.quiz-option.correct { border-color: var(--green); background: rgba(61,191,122,0.1); color: var(--white); }
+.quiz-option.wrong { border-color: var(--red); background: rgba(224,80,80,0.1); color: var(--white-dim); }
+.quiz-option.locked { cursor: default; }
+.option-letter {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+.quiz-feedback {
+  margin-top: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct-fb { background: rgba(61,191,122,0.1); border: 1px solid rgba(61,191,122,0.3); color: #7EDFAA; }
+.quiz-feedback.wrong-fb { background: rgba(224,80,80,0.1); border: 1px solid rgba(224,80,80,0.3); color: #E88888; }
+.quiz-submit {
+  margin-top: 1.8rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 2px;
+}
+.quiz-submit:hover { background: var(--gold); color: var(--navy); }
+.quiz-submit:disabled { opacity: 0.35; cursor: default; }
+.quiz-result {
+  margin-top: 1.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--white-dim);
+  display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-result .score { color: var(--gold-bright); font-size: 1.1rem; }
+
+/* SECTION SEPARATOR */
+.sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+  margin: 1rem 0;
+}
+
+/* STAT ROW */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+@media (max-width: 560px) { .stat-row { grid-template-columns: 1fr; } }
+.stat-box {
+  border: 1px solid var(--gold-border);
+  padding: 1.3rem;
+  text-align: center;
+  border-radius: 4px;
+  background: var(--navy-card);
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  color: var(--white-dim);
+  text-transform: uppercase;
+}
+
+/* FINAL SCORE */
+.final-score-block {
+  background: var(--navy-card);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 2.5rem;
+  text-align: center;
+  margin: 4rem 0;
+}
+.final-score-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.final-score-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  color: var(--gold-bright);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.final-score-sub {
+  font-size: 0.9rem;
+  color: var(--white-dim);
+  margin-bottom: 1.5rem;
+}
+.final-score-msg {
+  font-size: 1.05rem;
+  color: var(--white);
+  font-weight: 500;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* SCROLL HINT */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 0 1rem;
+}
+.scroll-hint-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+.scroll-hint-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--white-dim);
+}
+
+/* RESERVE DIAGRAM */
+.reserve-diagram {
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.reserve-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--navy-card);
+  border: 1px solid var(--gold-border);
+  padding: 1rem 1.3rem;
+  border-radius: 4px;
+}
+.reserve-arrow {
+  text-align: center;
+  color: var(--gold);
+  font-size: 1.2rem;
+  padding: 0.1rem 0;
+}
+.reserve-icon { font-size: 1.4rem; flex-shrink: 0; }
+.reserve-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.reserve-desc {
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  font-weight: 300;
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <div class="nav-brand">BWS — FINANCIAL POWER COURSE</div>
+  <div class="nav-score">SCORE: <span id="total-score">0</span> / <span id="total-possible">0</span></div>
+</nav>
+
+<!-- CHAPTER RIBBON -->
+<div class="chapter-ribbon">
+  <div class="chapter-dot active" onclick="scrollTo('s1')">01 · The Core Principle</div>
+  <div class="chapter-dot" onclick="scrollTo('s2')">02 · Historical Pattern</div>
+  <div class="chapter-dot" onclick="scrollTo('s3')">03 · Chicago Case Study</div>
+  <div class="chapter-dot" onclick="scrollTo('s4')">04 · Capital & Political Power</div>
+  <div class="chapter-dot" onclick="scrollTo('s5')">05 · Loss of Control</div>
+  <div class="chapter-dot" onclick="scrollTo('s6')">06 · Modern Banking Barriers</div>
+  <div class="chapter-dot" onclick="scrollTo('s7')">07 · Bitcoin as Infrastructure</div>
+  <div class="chapter-dot" onclick="scrollTo('s8')">08 · Community Bitcoin Reserve</div>
+  <div class="chapter-dot" onclick="scrollTo('s9')">09 · Community Reserve Model</div>
+  <div class="chapter-dot" onclick="scrollTo('s10')">10 · Final Assessment</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">Block Wall Street · Community Wealth Series</div>
+  <h1>
+    Financial Power
+    <span class="gold-line">& Black Community</span>
+    Wealth Through Bitcoin
+  </h1>
+  <p class="hero-sub">From Black Wall Street to Bitcoin Reserves — understanding the relationship between capital, autonomy, and the future of community wealth.</p>
+  <div class="hero-meta">
+    <div class="meta-pill">9 MODULES</div>
+
+    <div class="meta-pill">QUIZZES THROUGHOUT</div>
+    <div class="meta-pill">BLACK HISTORY + BITCOIN</div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <div class="scroll-hint-text">SCROLL TO BEGIN</div>
+  </div>
+</div>
+
+<div class="course-body">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 1 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-label">Module 01</div>
+  <div class="section-title">Political Power Follows<br><span class="accent">Financial Power</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">At the center of this entire study is one principle that has shaped societies for centuries: <strong>political power follows financial power.</strong> The groups that control capital, credit, and economic institutions ultimately hold the greatest influence over laws, policies, and the direction of society itself.</p>
+
+  <p class="body-text">This is not a controversial observation — it is a pattern visible across every civilization that has ever existed. Political offices appear to hold authority, but the true engine behind political influence is economic control: the ability to finance projects, support institutions, fund movements, and determine where resources flow.</p>
+
+  <div class="callout"><p>"Political power follows financial power. This principle is essential when studying the history of Black communities in the United States and their relationship to economic opportunity and political influence."</p></div>
+
+  <p class="body-text">Financial control delivers five distinct advantages that no amount of political maneuvering can replicate without an economic foundation underneath it.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🏦</div>
+      <div class="card-title">Access to Credit</div>
+      <div class="card-text">Credit is the lifeblood of economic growth. Communities with their own financing sources fund homes, businesses, infrastructure, and education without asking permission from institutions built to exclude them.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <div class="card-title">Economic Circulation</div>
+      <div class="card-text">When money stays within a community — moving between local banks, businesses, and residents — each dollar multiplies its impact. One dollar circulating locally can support multiple economic activities.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛡️</div>
+      <div class="card-title">Resilience</div>
+      <div class="card-text">Communities with their own financial systems can extend credit during downturns, protect local businesses, and maintain stability when distant banks prioritize outside shareholders over local well-being.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏛️</div>
+      <div class="card-title">Political Leverage</div>
+      <div class="card-text">Capital enables communities to fund campaigns, support leaders, invest in civic institutions, and shape public policy discussions — giving them a real seat at the table, not just a voice in the room.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <div class="card-title">Generational Wealth</div>
+      <div class="card-text">The deepest benefit of financial control is the ability to create wealth that passes from generation to generation — property, business equity, investment portfolios, and community endowment funds.</div>
+    </div>
+  </div>
+
+  <p class="body-text">When Black-owned financial institutions declined or disappeared across the 20th century, these five pillars weakened simultaneously. The loss of financial infrastructure had long-term consequences that continue to shape economic outcomes in many communities today.</p>
+
+  <p class="body-text">Bitcoin and decentralized financial systems now introduce new capabilities: self-custody of assets without banks, transparent public ledgers, a fixed supply that protects against inflation, and global accessibility. These characteristics have led communities to explore the concept of <strong>community Bitcoin reserves</strong> — collective pools of Bitcoin held for long-term economic development.</p>
+
+  <!-- QUIZ 1 -->
+  <div class="quiz-block" id="quiz1">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">1. The central principle of this module states that political power follows financial power. What does this mean in practical terms?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Elected officials always have more power than business leaders</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>The groups controlling capital ultimately hold the greatest influence over laws and society</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Political campaigns are the most effective path to community advancement</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Financial power and political power are independent of each other</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Capital, credit, and economic institutions are the real engine behind political influence — not elected positions alone.</div>
+        <div class="quiz-feedback wrong-fb">✗ Not quite. The principle is that those who control economic resources — banks, businesses, investment networks — ultimately shape the political environment, not the reverse.</div>
+      </div>
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">2. Which of the following best describes "economic circulation" within a community?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Money leaving the community to pay national banks and chain stores</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Investing exclusively in the stock market for long-term returns</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Money moving repeatedly between local banks, businesses, and residents, multiplying its impact</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Distributing government grants to community members</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Each dollar that stays local can support multiple economic activities — the bank loans it, the business hires with it, the worker spends it, and the cycle continues.</div>
+        <div class="quiz-feedback wrong-fb">✗ Review the concept. Economic circulation means money moves through local institutions repeatedly, strengthening neighborhoods from the inside out.</div>
+      </div>
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">3. Why does Bitcoin's fixed supply of 21 million coins matter in the context of community wealth building?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>It makes Bitcoin easy for governments to regulate and control</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>A fixed supply makes it faster for everyday transactions</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>It guarantees Bitcoin's price will increase every year</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>It cannot be expanded by any central authority, offering potential protection against inflation</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Unlike currencies whose supply can be expanded by central banks, Bitcoin's supply is mathematically capped — a meaningful distinction for long-term wealth storage.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about what makes Bitcoin structurally different from traditional currency. The answer lies in what cannot be done to its supply.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz1')">Submit Answers</button>
+      <div class="quiz-result" id="quiz1-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 2 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-label">Module 02</div>
+  <div class="section-title">The Historical Pattern of<br><span class="accent">Black Financial Power</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">To understand why modern tools like Bitcoin reserves could matter, we have to understand a pattern that appears repeatedly across Black American history: <strong>when Black communities controlled their own financial systems, they built thriving economic ecosystems.</strong></p>
+
+  <p class="body-text">These ecosystems were not accidents. They were deliberately constructed by entrepreneurs, bankers, business owners, and community leaders who understood that economic independence was necessary for social and political advancement. During the late 19th and early 20th centuries, many Black communities across the United States began building their own economic institutions.</p>
+
+  <div class="callout"><p>"An economic ecosystem — a network of interconnected businesses and institutions that support each other — was deliberately constructed by Black communities who understood that economic independence was the prerequisite for everything else."</p></div>
+
+  <p class="body-text">The most successful Black economic ecosystems shared common components: locally owned banks, insurance companies, department stores, newspapers, real estate developers, schools, churches, mutual aid societies, and lending networks. Each played a role. When they worked together, they created a self-reinforcing economic cycle where wealth remained within the community and could be reinvested in future development.</p>
+
+  <p class="body-text"><strong>Community banking</strong> was the spine of these ecosystems. Banks accepted deposits, issued loans, provided capital for new projects, and stabilized local financial activity during downturns. When Black entrepreneurs were denied access to white-owned banks through discriminatory policies like redlining, they built their own. These institutions allowed communities to fund their own growth — homes, businesses, commercial buildings — without waiting for outside approval that was never coming.</p>
+
+  <p class="body-text"><strong>Mutual aid societies</strong> served as early cooperative financial systems. Members contributed small amounts into shared funds used to support individuals during emergencies or to fund community projects — early examples of collective economic action that foreshadow the concept of a community Bitcoin reserve by more than a century.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">$</div>
+      <div class="stat-label">Credit Access</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">🔄</div>
+      <div class="stat-label">Internal Circulation</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">🏗️</div>
+      <div class="stat-label">Property Wealth</div>
+    </div>
+  </div>
+
+  <p class="body-text">The lessons from this era are clear: economic institutions are the foundation of community strength; access to capital determines who can build businesses and own property; local ownership allows wealth to circulate and multiply; and collective financial systems create long-term stability and resilience. These lessons remain relevant today.</p>
+
+  <!-- QUIZ 2 -->
+  <div class="quiz-block" id="quiz2">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="a">
+        <div class="quiz-q-text">1. Why did Black entrepreneurs build their own banks during the late 19th and early 20th centuries?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>White-owned banks refused to serve Black borrowers through discriminatory practices like redlining</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Black-owned banks offered higher interest rates than traditional banks</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Federal law required separate banking systems for Black Americans</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Black communities preferred smaller banks for privacy reasons</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Discriminatory practices including redlining systematically denied Black borrowers access to capital. Black entrepreneurs created their own financial institutions to fill the gap left by exclusion.</div>
+        <div class="quiz-feedback wrong-fb">✗ The core reason was exclusion — discriminatory policies denied Black Americans access to existing banking systems, making community-owned institutions not a preference but a necessity.</div>
+      </div>
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">2. What is the relationship between property ownership and generational wealth?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Property ownership only matters in wealthy neighborhoods with appreciating values</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Owning property guarantees political representation in local government</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Property provides stable housing, appreciates in value, serves as loan collateral, and can be passed to future generations</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Property ownership is less important than business ownership for building community wealth</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Property is one of the most powerful wealth-building tools because it serves multiple functions simultaneously — it houses families, appreciates over time, enables borrowing, and transfers between generations.</div>
+        <div class="quiz-feedback wrong-fb">✗ Property ownership builds wealth through multiple channels at once — think about all the financial functions it serves beyond just providing a place to live.</div>
+      </div>
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">3. How did mutual aid societies function as early economic tools in Black communities?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>They acted as government-funded insurance programs for low-income families</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Members contributed small amounts to shared funds used for emergencies and community projects</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>They were informal networks for trading goods without cash</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>They operated as secret savings accounts hidden from tax authorities</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Mutual aid societies were early forms of cooperative financial systems — collective pools of small contributions that created shared economic security. The concept closely mirrors modern community Bitcoin reserves.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think cooperatively. These were community-driven financial structures where pooled contributions created collective security — an idea with deep roots that connects directly to modern reserve concepts.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz2')">Submit Answers</button>
+      <div class="quiz-result" id="quiz2-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 3 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s3">
+  <div class="section-label">Module 03</div>
+  <div class="section-title">Chicago as a<br><span class="accent">Case Study</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">Chicago — and specifically Bronzeville on the South Side — provides one of the most important examples in American history of how Black communities built strong financial ecosystems through entrepreneurship, cooperation, and strategic control of capital. During the early 20th century, Chicago developed into one of the most significant centers of Black economic life in the United States.</p>
+
+  <p class="body-text">This did not happen by chance. Three figures and their institutions demonstrate how deliberate economic construction creates community power.</p>
+
+  <div class="profile-card">
+    <div class="profile-icon">🏦</div>
+    <div>
+      <div class="profile-name">Jesse Binga</div>
+      <div class="profile-role">Banker · Financial Infrastructure Builder</div>
+      <p class="body-text" style="margin-bottom:0">Binga founded Binga State Bank in 1921, making it one of the most prominent Black-owned financial institutions of its era. When white-owned banks refused to lend to Black borrowers, Binga's institution financed home ownership through mortgage loans, provided startup capital for local entrepreneurs, and enabled the construction of residential and commercial buildings throughout Bronzeville. His work demonstrated a crucial principle: <strong>the communities that control access to capital are the communities that shape physical and economic development.</strong></p>
+    </div>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-icon">🏬</div>
+    <div>
+      <div class="profile-name">The Jones Brothers</div>
+      <div class="profile-role">Retailers · Business Infrastructure Anchors</div>
+      <p class="body-text" style="margin-bottom:0">The Jones Brothers department store became one of the most successful Black-owned retail enterprises in Chicago. Department stores during this era were major economic institutions — they employed large numbers of workers, stimulated supply chain activity, and served as commercial centers. Their symbolic importance was equally powerful: they demonstrated that large-scale successful entrepreneurship was possible despite widespread economic barriers. When communities support locally owned businesses, money circulates within the community multiple times before leaving.</p>
+    </div>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-icon">🎲</div>
+    <div>
+      <div class="profile-name">Theodore "Teddy" Roe</div>
+      <div class="profile-role">Policy Numbers Operator · Informal Finance</div>
+      <p class="body-text" style="margin-bottom:0">Roe operated the policy numbers system on Chicago's South Side — an informal lottery network that became widespread in urban communities. While operating outside formal regulatory structures, these networks financed small businesses that could not obtain traditional loans, supported local projects, provided employment, and circulated cash throughout the neighborhood economy. His story highlights an important historical reality: <strong>communities often develop alternative financial structures when traditional systems exclude them.</strong></p>
+    </div>
+  </div>
+
+  <p class="body-text">Chicago's success did not rely on any single institution. It emerged from the interaction of many components working together: banks providing loans, large businesses employing workers, real estate developers building property wealth, churches and civic groups supporting initiatives, and informal networks supplementing the formal system. <strong>The lesson for today: control of capital can transform communities, and that principle has not changed regardless of what tools are available.</strong></p>
+
+  <!-- QUIZ 3 -->
+  <div class="quiz-block" id="quiz3">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">1. What was Binga State Bank's most significant contribution to Chicago's Black community?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>It lobbied the federal government for civil rights legislation</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>It offered lower fees than other banks in the region</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>It invested Chicago's Black community funds into the stock market</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>It provided mortgages, business loans, and development capital that white-owned banks refused to offer Black residents</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Binga's bank unlocked financial access that was being systematically denied — mortgages for families, startup capital for entrepreneurs, and development financing that built Bronzeville's physical infrastructure.</div>
+        <div class="quiz-feedback wrong-fb">✗ The key is access. Binga's bank provided the financial services that the rest of the banking system categorically refused to offer Black Chicagoans — that access was the transformation.</div>
+      </div>
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">2. What does Teddy Roe's policy numbers operation reveal about community financial systems?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Illegal financial networks are always harmful to communities</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Communities develop alternative financial structures when traditional institutions exclude them</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Informal networks cannot build lasting economic stability</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Black communities preferred informal finance over formal banking</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. The policy system operated in a legal gray area, but it filled real economic gaps — financing businesses denied bank loans, circulating cash, creating employment. It shows that economic exclusion breeds economic innovation.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about the cause and effect. Roe's network existed because formal banking excluded Black borrowers — alternative financial systems are a response to exclusion, not a preference.</div>
+      </div>
+      <div class="quiz-q" data-answer="a">
+        <div class="quiz-q-text">3. Why were large Black-owned businesses like the Jones Brothers store especially important beyond just providing jobs?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>They anchored economic circulation, keeping money within the community, and proved that large-scale Black entrepreneurship was possible</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>They competed directly with national chains to drive prices down</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>They focused primarily on importing goods from Africa</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>They primarily served as political fundraising platforms</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Large businesses served a dual role — economic anchors that kept money circulating locally, and symbolic proof that significant Black enterprise was achievable, inspiring further entrepreneurship.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about two things simultaneously: the practical economic role these businesses played in keeping money local, and the symbolic power of demonstrating what Black enterprise could achieve at scale.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz3')">Submit Answers</button>
+      <div class="quiz-result" id="quiz3-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 4 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s4">
+  <div class="section-label">Module 04</div>
+  <div class="section-title">How Financial Power<br><span class="accent">Created Political Power</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">One of the most important lessons from economic history is the deep connection between financial power and political power. While political systems appear to operate through voting and legislation, the ability to influence those systems depends fundamentally on who controls economic resources.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-label">FIRST PATHWAY</div>
+      <div class="timeline-text"><strong>Housing and Property Ownership.</strong> When communities gained access to mortgages and development loans, they purchased homes and real estate. This created three layers of political power: financial stability that could be passed generationally, neighborhood stability that reduced turnover and increased civic engagement, and direct political participation because property owners with a financial stake in their community were more motivated to vote, attend meetings, and influence zoning and infrastructure decisions.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-label">SECOND PATHWAY</div>
+      <div class="timeline-text"><strong>Influence in Local Politics.</strong> Economic leaders could contribute to political campaigns, support candidates who represented community interests, fund civic initiatives, and organize business coalitions that advocated for policy change. Economic power provided the resources to build networks of influence — business associations, civic groups, and advocacy organizations that shaped public policy.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-label">THIRD PATHWAY</div>
+      <div class="timeline-text"><strong>Community Development and Institutional Growth.</strong> Wealth generated through businesses and financial institutions supported the development of schools, churches, civic organizations, and charitable foundations. These institutions reinforced political power by creating organized networks of residents who could advocate collectively for their interests.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-label">FOURTH PATHWAY</div>
+      <div class="timeline-text"><strong>Economic Independence and Self-Governance.</strong> When communities controlled their own financial resources, they were less dependent on external institutions. This independence allowed them to invest in neighborhood infrastructure, support local entrepreneurs, maintain cultural institutions, and provide social services — a form of self-governance rooted in economic capacity.</div>
+    </div>
+  </div>
+
+  <div class="callout"><p>"Financial power functioned as the foundation for community autonomy and collective decision-making. Economic strength gives communities a stronger voice in government and greater ability to advocate for their interests."</p></div>
+
+  <!-- QUIZ 4 -->
+  <div class="quiz-block" id="quiz4">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">1. How does property ownership specifically translate into political influence?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Property owners receive special voting rights not available to renters</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>The federal government grants property owners automatic seats on local councils</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Having a financial stake in a neighborhood motivates higher political participation in local governance and policy decisions</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Property ownership has no direct relationship to political influence</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Property owners have a financial stake in neighborhood policies — zoning, development, infrastructure — which motivates them to vote, attend meetings, and advocate in ways that renters with no economic stake may not.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about motivation and stakes. When someone owns property, policies about their neighborhood directly affect their financial asset — that creates powerful incentive to engage politically.</div>
+      </div>
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">2. What is meant by "economic independence as self-governance"?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Communities that earn enough money can legally separate from city government</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Economic independence means refusing to pay taxes to outside authorities</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Businesses that generate profit automatically gain the right to govern their neighborhoods</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Controlling your own financial resources allows you to make decisions based on local priorities rather than outside pressures</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. When a community controls its own capital, it can design solutions that reflect its own needs and values — investing in infrastructure, supporting entrepreneurs, maintaining cultural institutions — without waiting for external approval.</div>
+        <div class="quiz-feedback wrong-fb">✗ Self-governance in this context means the ability to make real decisions about community priorities, which only comes when you control your own financial resources rather than depending on outside institutions.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz4')">Submit Answers</button>
+      <div class="quiz-result" id="quiz4-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 5 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s5">
+  <div class="section-label">Module 05</div>
+  <div class="section-title">The Loss of<br><span class="accent">Financial Control</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">To understand why rebuilding community financial systems today is urgent, we must examine how and why many historically strong Black economic ecosystems declined across the 20th century. Several major economic and policy shifts gradually weakened these systems, reducing the ability of communities to control their own capital — and when that control diminished, neighborhoods experienced long-term economic challenges that affected wealth creation, political influence, and community development simultaneously.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">💥</div>
+      <div class="card-title">The Great Depression</div>
+      <div class="card-text">Black-owned banks were particularly vulnerable to the 1930s collapse. Serving communities with limited financial reserves, many institutions closed as loan defaults rose and deposits fell. When these banks disappeared, communities lost their primary sources of mortgages, small business loans, and development capital.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏗️</div>
+      <div class="card-title">Urban Renewal</div>
+      <div class="card-text">Mid-20th century urban renewal projects — presented as modernization — frequently demolished thriving Black business districts, displaced established communities, and disrupted long-standing economic networks. When business districts were dismantled, the entire economic ecosystem that supported them collapsed.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <div class="card-title">Banking Consolidation</div>
+      <div class="card-text">Mergers absorbed local banks into national institutions that made lending decisions based on national risk models rather than community relationships. Smaller businesses and borrowers found financing more difficult to secure, reducing the community's ability to influence lending priorities.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚪</div>
+      <div class="card-title">Capital Flight</div>
+      <div class="card-text">When businesses and investors relocated from urban neighborhoods to suburban areas during the latter 20th century, economic activity declined, employment opportunities fell, property values decreased, and investment in local infrastructure slowed — a compounding cycle of disinvestment.</div>
+    </div>
+  </div>
+
+  <div class="callout"><p>"Without strong economic institutions: fewer resources are available to support civic initiatives, community organizations have less funding, and political advocacy becomes more difficult. Economic strength is the foundation of political participation."</p></div>
+
+  <!-- QUIZ 5 -->
+  <div class="quiz-block" id="quiz5">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">1. Why were Black-owned banks particularly vulnerable during the Great Depression compared to larger white-owned banks?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Black-owned banks held more risky international investments</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>They served communities with limited financial reserves, making them fragile when deposits fell and loan defaults rose</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Federal regulators deliberately targeted Black-owned banks during the crisis</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>They had invested too heavily in real estate speculation</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Smaller institutions with limited capital reserves could not absorb the simultaneous shocks of rising defaults and falling deposits. Their size and community focus made them more fragile in a systemic crisis.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think structurally — community banks serving lower-income communities operated with thinner capital buffers, which made them less able to survive the same shocks that larger, better-capitalized institutions could absorb.</div>
+      </div>
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">2. What is "capital flight" and why did it weaken Black communities?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>The movement of Black families to Northern cities during the Great Migration</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>The export of Black-owned businesses to international markets</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Investment and financial resources leaving urban neighborhoods, reducing economic activity, employment, and property values</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>The federal government seizing community assets during urban renewal programs</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. When businesses and investors relocated to suburbs, they took capital, jobs, and economic activity with them — leaving behind communities with fewer resources to sustain themselves.</div>
+        <div class="quiz-feedback wrong-fb">✗ Capital flight refers to the outward movement of money and investment from specific areas — when resources leave a neighborhood, the economic activity that depends on them leaves too.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz5')">Submit Answers</button>
+      <div class="quiz-result" id="quiz5-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 6 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s6">
+  <div class="section-label">Module 06</div>
+  <div class="section-title">Why Modern Banking<br><span class="accent">Still Creates Barriers</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">Although the financial system has evolved significantly, many structural barriers still limit access to capital and wealth-building opportunities for many communities. Modern banking systems are highly centralized and often controlled by large financial institutions operating on national or global scales. Their structure creates obstacles for individuals and communities seeking long-term financial independence.</p>
+
+  <div class="btc-grid">
+    <div class="btc-feature">
+      <div class="btc-feature-label">Strict Lending Requirements</div>
+      <div class="btc-feature-text">Credit scores, documented income history, collateral requirements, and debt-to-income ratios create high barriers for entrepreneurs with limited financial histories — especially first-generation business builders.</div>
+    </div>
+    <div class="btc-feature">
+      <div class="btc-feature-label">Centralized Control</div>
+      <div class="btc-feature-text">A relatively small number of large institutions control banking services and lending decisions made based on national models, not local knowledge — leading to investment deserts in specific neighborhoods.</div>
+    </div>
+    <div class="btc-feature">
+      <div class="btc-feature-label">Inflation Erosion</div>
+      <div class="btc-feature-text">Traditional savings accounts often earn interest rates that don't keep pace with inflation. Money saved today may buy fewer goods in the future, quietly eroding the purchasing power of cautious savers.</div>
+    </div>
+    <div class="btc-feature">
+      <div class="btc-feature-label">Limited Investment Access</div>
+      <div class="btc-feature-text">Many wealth-building investment opportunities historically required significant capital, specialized knowledge, or established financial networks — concentrating returns among those who already have assets.</div>
+    </div>
+  </div>
+
+  <p class="body-text">When these barriers combine — strict lending, centralized capital, inflation pressure, and limited investment access — they create an environment where building <strong>collective wealth</strong> is structurally difficult. Understanding these limitations explains why communities are exploring new financial tools that may offer greater accessibility, transparency, and independence.</p>
+
+  <!-- QUIZ 6 -->
+  <div class="quiz-block" id="quiz6">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">1. Why do centralized banking systems sometimes underserve specific communities even without intentional discrimination?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Large banks lack the technology to serve smaller communities efficiently</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Federal regulations explicitly require banks to focus on wealthy customers</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>National banks prefer customers who speak English as a first language</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Lending decisions based on national risk models don't capture local community context, leading to investment gaps in specific neighborhoods</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Large banks optimize for national averages and risk profiles — not local context. This produces structural gaps even without explicit intent to discriminate.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about how scale affects decision-making. National risk models are built on broad averages, which means they often miss the specific dynamics of individual communities — creating gaps that aren't necessarily intentional but are real regardless.</div>
+      </div>
+      <div class="quiz-q" data-answer="a">
+        <div class="quiz-q-text">2. How does inflation specifically undermine savings-based wealth building for lower-income households?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>If savings account interest rates are lower than inflation, the real value of savings decreases over time even as the dollar amount stays the same or grows slightly</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Inflation causes banks to seize savings accounts from low-income customers</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Low-income households spend more money as inflation rises, depleting savings faster</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Inflation only affects households that invest in the stock market</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. If your savings account earns 0.5% and inflation runs at 4%, you're losing real purchasing power every year — your dollar amount may increase slightly but buys less. This is why holding cash alone is not a wealth-building strategy.</div>
+        <div class="quiz-feedback wrong-fb">✗ The key is the gap between what savings earn and what inflation costs. When prices rise faster than savings grow, the real value of those savings declines — the number looks higher but buys less.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz6')">Submit Answers</button>
+      <div class="quiz-result" id="quiz6-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 7 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s7">
+  <div class="section-label">Module 07</div>
+  <div class="section-title">Bitcoin as New<br><span class="accent">Financial Infrastructure</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">To understand why some communities and institutions are exploring Bitcoin as part of long-term financial strategies, we need to understand what makes Bitcoin <em>structurally different</em> from traditional financial systems — not just different in price or technology, but different in architecture.</p>
+
+  <p class="body-text">Traditional financial systems are built around centralized institutions — central banks, commercial banks, and financial regulators — that manage the issuance of money, control payment systems, and oversee the storage and transfer of financial assets. Bitcoin represents a fundamentally different model: a decentralized digital network where the system functions through a distributed set of computers around the world rather than through any single controlling authority.</p>
+
+  <div class="btc-grid">
+    <div class="btc-feature">
+      <div class="btc-feature-label">Decentralization</div>
+      <div class="btc-feature-text">No single government controls Bitcoin. No single bank can alter the transaction ledger. No central authority can unilaterally change the system. The rules are enforced collectively by thousands of participants worldwide.</div>
+    </div>
+    <div class="btc-feature">
+      <div class="btc-feature-label">Fixed Supply — 21 Million</div>
+      <div class="btc-feature-text">Bitcoin's maximum supply is hardcoded at 21 million coins. It cannot be expanded by any government or institution. The rate of new Bitcoin entering circulation decreases over time through programmed halving events approximately every four years.</div>
+    </div>
+    <div class="btc-feature">
+      <div class="btc-feature-label">Self-Custody</div>
+      <div class="btc-feature-text">Individuals and organizations can hold Bitcoin directly through digital wallets using cryptographic keys — storing value independently of financial institutions and transferring assets without requiring bank permission.</div>
+    </div>
+    <div class="btc-feature">
+      <div class="btc-feature-label">Transparent Blockchain</div>
+      <div class="btc-feature-text">All transactions are recorded on a public ledger. Anyone can verify that specific Bitcoin exists in specific wallets — enabling "proof of reserves" that differs significantly from traditional finance where most balance sheets are not publicly verifiable.</div>
+    </div>
+  </div>
+
+  <div class="callout"><p>"Many analysts describe Bitcoin not simply as a digital asset, but as a new layer of financial infrastructure built on internet-based technology — a system for storing and transferring value that operates independently of traditional banking institutions."</p></div>
+
+  <p class="body-text">The halving mechanism deserves particular attention. Approximately every four years, the reward that miners receive for validating Bitcoin transactions is cut in half. This means the rate of new Bitcoin entering circulation slows over time, making the asset progressively more scarce. By design, Bitcoin becomes harder to produce over time — a stark contrast to currencies that can be printed in unlimited quantities.</p>
+
+  <!-- QUIZ 7 -->
+  <div class="quiz-block" id="quiz7">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">1. What is "self-custody" in the context of Bitcoin, and why is it significant for communities historically excluded from banking?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Self-custody means storing Bitcoin in a bank's secure vault on your behalf</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Self-custody means holding Bitcoin directly via cryptographic keys — storing value without requiring a bank's permission or intermediary</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Self-custody is a legal term for owning property without a mortgage</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Self-custody refers to communities managing their own local currencies</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Self-custody allows anyone with access to technology to hold assets without needing a bank account, meeting lending criteria, or passing a credit check — exactly the kind of system that bypasses historical exclusion mechanisms.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about what Bitcoin makes possible that traditional banking doesn't. Self-custody means direct ownership — no institution between you and your asset, no approval required.</div>
+      </div>
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">2. What does the Bitcoin halving mechanism do to the supply of new Bitcoin over time?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>It doubles the number of Bitcoin available every four years</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>It allows governments to mint additional Bitcoin for national reserves</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>It cuts the mining reward in half approximately every four years, progressively slowing the rate of new Bitcoin entering circulation</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>It removes Bitcoin from circulation that hasn't been used in two years</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. The halving is a programmed event that makes Bitcoin progressively more scarce over time — the opposite of how traditional currencies work, which can be issued in unlimited quantities.</div>
+        <div class="quiz-feedback wrong-fb">✗ The halving reduces supply creation over time, not increases it. Every four years, the rate at which new Bitcoin is created gets cut in half — making the existing supply progressively more scarce.</div>
+      </div>
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">3. How does Bitcoin's blockchain transparency differ from traditional financial systems?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Bitcoin's blockchain shows the personal identities of all account holders</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Traditional banks also publish their complete transaction records publicly</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>The blockchain reveals transaction amounts but not wallet addresses</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Anyone can publicly verify Bitcoin balances and transaction history on the blockchain, while traditional bank balance sheets are typically not publicly verifiable</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. The public blockchain enables "proof of reserves" — anyone can confirm that a specific wallet holds a specific amount of Bitcoin. No traditional financial institution offers comparable public verifiability of its holdings.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about what "public ledger" actually means. Bitcoin transactions are visible to anyone — a fundamentally different transparency model than traditional banking where balance sheet details are private.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz7')">Submit Answers</button>
+      <div class="quiz-result" id="quiz7-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 8 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s8">
+  <div class="section-label">Module 08</div>
+  <div class="section-title">The Community<br><span class="accent">Bitcoin Reserve</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">The Community Bitcoin Reserve concept centers on a simple but powerful idea: a group of people, an organization, or a community collectively accumulates and holds Bitcoin as a long-term financial asset for the benefit of present and future members. Rather than using funds for short-term expenses, the reserve functions as a strategic treasury designed to grow over time and provide financial stability, opportunities, and resources for the community.</p>
+
+  <p class="body-text">This is not a new concept repackaged with new technology. The underlying logic mirrors mutual aid societies, cooperative savings groups, sovereign wealth funds, and university endowments — collective financial structures that communities and institutions have used for centuries to preserve wealth across generations. Bitcoin is the modern instrument; the principle is ancient.</p>
+
+  <div class="reserve-diagram">
+    <div class="reserve-row">
+      <div class="reserve-icon">💰</div>
+      <div>
+        <div class="reserve-label">Sources of Funding</div>
+        <div class="reserve-desc">Community contributions, donations from supporters, grants, surplus program funds — all directed into the reserve rather than consumed by short-term spending</div>
+      </div>
+    </div>
+    <div class="reserve-arrow">↓</div>
+    <div class="reserve-row">
+      <div class="reserve-icon">₿</div>
+      <div>
+        <div class="reserve-label">Bitcoin Accumulation</div>
+        <div class="reserve-desc">Funds converted to Bitcoin and held in self-custody using hardware wallets, multisignature setups, and transparent blockchain verification</div>
+      </div>
+    </div>
+    <div class="reserve-arrow">↓</div>
+    <div class="reserve-row">
+      <div class="reserve-icon">📈</div>
+      <div>
+        <div class="reserve-label">Long-Term Hold Strategy</div>
+        <div class="reserve-desc">Reserve grows over years and decades — majority preserved intact, small portions deployed strategically, similar to endowment fund management</div>
+      </div>
+    </div>
+    <div class="reserve-arrow">↓</div>
+    <div class="reserve-row">
+      <div class="reserve-icon">🏘️</div>
+      <div>
+        <div class="reserve-label">Community Deployment</div>
+        <div class="reserve-desc">Reserve eventually supports entrepreneurship programs, financial education, community development projects, and youth mentorship — for current and future generations</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">The governance structure is critical. For a reserve to function with integrity, it must have clear rules about who holds custody, how decisions are made, what circumstances allow funds to be used, and how the reserve is protected from misuse. Bitcoin's multisignature wallet technology — requiring multiple approvals before funds can be moved — provides a technical foundation for this kind of accountability.</p>
+
+  <div class="callout"><p>"The concept of a community Bitcoin reserve is less about technology and more about rebuilding financial foundations. History shows that communities capable of building and controlling their own financial infrastructure tend to achieve greater stability, independence, and influence."</p></div>
+
+  <!-- QUIZ 8 -->
+  <div class="quiz-block" id="quiz8">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">1. Which historical financial structures most closely resemble the concept of a community Bitcoin reserve?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Individual stock market brokerage accounts and day trading platforms</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Payday lending networks and check cashing services</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Mutual aid societies, cooperative savings pools, endowment funds, and sovereign wealth funds</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Federal reserve banking and central bank monetary policy</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. The community reserve concept combines the cooperative savings logic of mutual aid societies with the long-term preservation model of endowments and sovereign wealth funds — Bitcoin is the instrument, but the financial architecture is centuries old.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about collective, long-term wealth structures. The reserve is designed to pool resources and preserve them across time — which historical financial tools operated on that same logic?</div>
+      </div>
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">2. Why is multisignature wallet technology important for a community Bitcoin reserve?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>It allows multiple community members to earn Bitcoin simultaneously</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>It requires multiple approvals before funds can be moved, preventing any single individual from having unilateral control over community assets</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>It speeds up Bitcoin transactions to near-instant settlement</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>It allows the reserve to be verified by a government auditor</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Multisignature technology is the governance mechanism — it ensures that collective assets require collective approval to move, which is the technical foundation of accountable community management.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about governance and accountability. Multisig prevents any single person from having unilateral control — an essential safeguard when managing collective community assets.</div>
+      </div>
+      <div class="quiz-q" data-answer="a">
+        <div class="quiz-q-text">3. How does a community Bitcoin reserve function like a university endowment?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Both preserve the principal long-term while deploying only a portion periodically to fund programs — sustaining themselves across generations</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Both require government approval before distributing funds</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Both operate as non-profit tax-exempt charitable organizations</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Both distribute all accumulated funds annually to beneficiaries</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Endowment logic: preserve the core asset, deploy a small percentage each year. This allows the fund to support current needs while remaining intact for future generations — exactly the model a community reserve aims for.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about what makes endowments unique — it's not who manages them, it's the structure: preserve the principal, use only the returns or a small portion, sustain the fund indefinitely.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz8')">Submit Answers</button>
+      <div class="quiz-result" id="quiz8-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 9 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s9">
+  <div class="section-label">Module 09</div>
+  <div class="section-title">The Community Reserve Model &<br><span class="accent">Financial Sovereignty</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">The Community Bitcoin Reserve Model represents a concrete framework for implementing collective wealth building in any neighborhood or organization that has faced systemic economic disinvestment. At its core, the model combines three ideas: community ownership of financial assets, long-term savings rather than short-term spending, and financial systems that operate independently of traditional banking barriers.</p>
+
+  <p class="body-text">One of the model's most strategically important features is <strong>budget-neutral funding</strong> — the reserve would not be built through new taxes or increased financial burdens on residents. Instead, it grows through voluntary donations from individuals, philanthropists, and Bitcoin supporters; grants from institutions funding financial education or economic development; and surplus funds redirected from existing programs rather than left undeployed.</p>
+
+  <div class="callout"><p>"Budget neutrality is critical because it removes the most common political barrier to community financial initiatives. You cannot oppose a community savings fund that costs the taxpayer nothing."</p></div>
+
+  <p class="body-text">The broader concept that emerges from this model is <strong>financial sovereignty</strong> — the ability of a group or community to manage its own financial assets independently and make decisions about how those resources are used. Financial sovereignty does not mean operating completely outside traditional financial systems. It means possessing your own financial foundation that can support your priorities and goals without depending entirely on institutions whose incentives may not align with your community's needs.</p>
+
+  <p class="body-text">An independent capital pool — even a modest one held in Bitcoin — enables a community to finance entrepreneurship programs, small business development, educational initiatives, infrastructure improvements, and community organizations from within. This is the same capability that Binga State Bank provided in Bronzeville in 1921, rebuilt for the digital age with tools that cannot be redlined, cannot be Urban Renewed away, and cannot be absorbed by a national bank consolidation.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">🏘️</div>
+      <div class="stat-label">Community Owned</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Generational Horizon</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0</div>
+      <div class="stat-label">New Taxes Required</div>
+    </div>
+  </div>
+
+  <!-- QUIZ 9 -->
+  <div class="quiz-block" id="quiz9">
+    <div class="quiz-block-inner">
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">1. What is "financial sovereignty" as defined in this module?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Operating entirely outside all traditional financial systems and government regulation</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Becoming wealthy enough to no longer need a bank account</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Controlling a country's monetary policy through an elected position</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>The ability of a community to manage its own financial assets independently and make decisions based on local priorities rather than external institutional constraints</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Financial sovereignty is about having your own financial foundation — not rejecting external systems entirely, but having enough independent capacity to make decisions based on community needs and values.</div>
+        <div class="quiz-feedback wrong-fb">✗ Financial sovereignty isn't about disconnection — it's about capacity. When you have your own financial foundation, you make decisions based on your community's priorities, not whatever external institutions decide to offer you.</div>
+      </div>
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">2. Why is budget-neutral funding a strategically important feature of the community reserve model?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>It allows the community to avoid filing tax returns on the reserve</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>It eliminates the most common political objection by proving community wealth building can happen without new taxes or increased public debt</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>It guarantees that the reserve will grow faster than inflation</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>It prevents federal oversight of the Bitcoin reserve</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Budget neutrality disarms the most effective opposition argument — "who pays for it?" By building only on voluntary and surplus sources, the model demonstrates that community wealth building doesn't require burdening taxpayers.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think politically. The most common reason community financial programs fail to gain support is cost. Budget neutrality removes that objection before it can be raised.</div>
+      </div>
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">3. In what way does a community Bitcoin reserve represent continuity with historical Black financial traditions rather than a break from them?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Bitcoin's founders were inspired by Black Wall Street when designing the network</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Bitcoin reserves use the same legal structures as early Black-owned banks</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>The core principle — communities pooling resources to build collective financial infrastructure outside hostile or exclusionary systems — is the same principle behind Black Wall Street, mutual aid societies, and Binga State Bank</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Bitcoin was created specifically to address the racial wealth gap in America</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. The tools are new; the principle is historic. Black communities have always built alternative financial infrastructure when traditional systems excluded them. A Bitcoin reserve is the 21st century expression of that same strategy.</div>
+        <div class="quiz-feedback wrong-fb">✗ Go deeper than technology. What's the underlying pattern? When traditional systems exclude Black communities, those communities build their own — from mutual aid societies in the 1800s to Bitcoin reserves today. The instrument changes. The principle doesn't.</div>
+      </div>
+      <button class="quiz-submit" onclick="submitQuiz('quiz9')">Submit Answers</button>
+      <div class="quiz-result" id="quiz9-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 10 — FINAL ASSESSMENT -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="s10">
+  <div class="section-label">Module 10</div>
+  <div class="section-title">Final Assessment —<br><span class="accent">The Complete Picture</span></div>
+  <div class="section-divider"></div>
+
+  <p class="body-text">This final assessment draws on all nine modules. Demonstrate your understanding of the relationship between capital, community power, historical patterns, and Bitcoin's role as modern financial infrastructure for communities seeking economic sovereignty.</p>
+
+  <div class="quiz-block" id="quiz10">
+    <div class="quiz-block-inner">
+
+      <div class="quiz-q" data-answer="b">
+        <div class="quiz-q-text">1. If a community's bank closes and all lending moves to a large national institution, what is the MOST likely long-term consequence?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>The community benefits from access to the larger bank's national investment networks</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Lending decisions are made by national models not calibrated to local needs, reducing credit access for community entrepreneurs and property buyers</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>The national bank creates more jobs in the community than the local bank did</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Local residents gain better interest rates through economies of scale</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. National banks optimize for national metrics — local community members who don't fit those models find their credit access reduced, perpetuating the cycle of economic underinvestment.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about what was lost when the community bank closed — not just a building, but local knowledge, community relationships, and lending decisions calibrated to local context.</div>
+      </div>
+
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">2. What historical event most directly parallels a community Bitcoin reserve being accessible to any community member with internet access regardless of credit history?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>The Great Migration of Black Americans from South to North</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>The establishment of the Federal Reserve in 1913</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>The creation of the FDIC to insure bank deposits</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Black entrepreneurs building their own banks because white-owned institutions refused to serve Black borrowers — creating alternative access when the mainstream system excluded them</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. In both cases, exclusion from mainstream systems drives communities to build their own financial infrastructure — one using brick-and-mortar banks, one using open-source cryptographic networks.</div>
+        <div class="quiz-feedback wrong-fb">✗ Think about the pattern: exclusion from the mainstream system leads to building an alternative. That pattern has deep historical roots in Black financial history.</div>
+      </div>
+
+      <div class="quiz-q" data-answer="a">
+        <div class="quiz-q-text">3. A neighborhood organization is debating whether to spend surplus program funds immediately on a community festival or direct them into a Bitcoin reserve. From this course's perspective, what is the strongest argument for the reserve?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>The reserve prioritizes generational wealth over short-term spending, creating financial infrastructure that benefits future members, not just current ones</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Bitcoin always increases in price, making it more valuable than any community event</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Community events don't build relationships or civic engagement</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Bitcoin is easier to manage than planning a community event</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. The reserve argument is fundamentally about time horizon — the same surplus that funds one festival today could, held and grown over decades, fund dozens of programs for the community's children and grandchildren.</div>
+        <div class="quiz-feedback wrong-fb">✗ Avoid the price argument — this course is about structural thinking, not speculation. The strongest argument for the reserve is the long-term vs. short-term distinction: generational wealth versus immediate consumption.</div>
+      </div>
+
+      <div class="quiz-q" data-answer="c">
+        <div class="quiz-q-text">4. How does the "don't sell it, collateralize it" principle apply to a community Bitcoin reserve?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>The community should sell Bitcoin when prices are high and repurchase when prices fall</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>The reserve should be liquidated and converted to real estate after five years</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>The reserve's Bitcoin can serve as collateral for community loans and initiatives without being sold, preserving the asset while unlocking its financial utility</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>The principle only applies to individual Bitcoin holders, not community reserves</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. Collateralizing preserves the reserve's Bitcoin while allowing the community to access liquidity for programs and development — the same logic that allows Bitcoin holders to borrow against their holdings without triggering a taxable sale event.</div>
+        <div class="quiz-feedback wrong-fb">✗ The "don't sell it, collateralize it" principle is about using Bitcoin as financial leverage without liquidating the underlying asset — the reserve maintains its Bitcoin position while accessing its value for community programs.</div>
+      </div>
+
+      <div class="quiz-q" data-answer="d">
+        <div class="quiz-q-text">5. What is the central insight connecting all nine modules of this course?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-val="a"><span class="option-letter">A</span>Bitcoin will solve all economic inequality problems automatically through its technology</div>
+          <div class="quiz-option" data-val="b"><span class="option-letter">B</span>Black communities should abandon traditional banking entirely in favor of Bitcoin</div>
+          <div class="quiz-option" data-val="c"><span class="option-letter">C</span>Political participation is the most effective path to community economic advancement</div>
+          <div class="quiz-option" data-val="d"><span class="option-letter">D</span>Communities that build and maintain control over their financial resources gain greater capacity to shape their economic and social development — and Bitcoin is a modern tool for doing so</div>
+        </div>
+        <div class="quiz-feedback correct-fb">✓ Correct. The central lesson spans centuries: capital is autonomy. From Binga State Bank to community Bitcoin reserves, from mutual aid societies to modern reserve models — the communities that control their financial infrastructure control their future.</div>
+        <div class="quiz-feedback wrong-fb">✗ Return to the core thesis. This course is not about technology or abandoning existing systems. It's about the timeless relationship between controlling capital and shaping your own future — Bitcoin is one modern instrument for that ancient strategy.</div>
+      </div>
+
+      <button class="quiz-submit" onclick="submitQuiz('quiz10')">Submit Final Assessment</button>
+      <div class="quiz-result" id="quiz10-result"></div>
+    </div>
+  </div>
+
+  <!-- FINAL SCORE -->
+  <div class="final-score-block" id="final-score-block" style="display:none">
+    <div class="final-score-label">COURSE COMPLETE — FINAL SCORE</div>
+    <div class="final-score-number" id="final-pct">—%</div>
+    <div class="final-score-sub" id="final-fraction">0 / 0 correct</div>
+    <div class="final-score-msg" id="final-msg">—</div>
+  </div>
+</div>
+
+</div><!-- end course-body -->
+
+<script>
+// ── STATE ─────────────────────────────────────────
+const quizzes = {
+  quiz1: { total: 3, score: 0, submitted: false },
+  quiz2: { total: 3, score: 0, submitted: false },
+  quiz3: { total: 3, score: 0, submitted: false },
+  quiz4: { total: 2, score: 0, submitted: false },
+  quiz5: { total: 2, score: 0, submitted: false },
+  quiz6: { total: 2, score: 0, submitted: false },
+  quiz7: { total: 3, score: 0, submitted: false },
+  quiz8: { total: 3, score: 0, submitted: false },
+  quiz9: { total: 3, score: 0, submitted: false },
+  quiz10: { total: 5, score: 0, submitted: false },
+};
+
+function getTotalPossible() {
+  return Object.values(quizzes).reduce((a, q) => a + q.total, 0);
+}
+function getTotalScore() {
+  return Object.values(quizzes).reduce((a, q) => a + q.score, 0);
+}
+
+function updateNavScore() {
+  document.getElementById('total-score').textContent = getTotalScore();
+  document.getElementById('total-possible').textContent = getTotalPossible();
+}
+updateNavScore();
+
+// ── OPTION SELECTION ──────────────────────────────
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const q = this.closest('.quiz-q');
+    const block = this.closest('.quiz-block');
+    if (quizzes[block.id] && quizzes[block.id].submitted) return;
+    q.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+// ── SUBMIT ────────────────────────────────────────
+function submitQuiz(quizId) {
+  const block = document.getElementById(quizId);
+  const state = quizzes[quizId];
+  if (state.submitted) return;
+
+  const questions = block.querySelectorAll('.quiz-q');
+  let score = 0;
+  let allAnswered = true;
+
+  questions.forEach(q => {
+    const selected = q.querySelector('.quiz-option.selected');
+    if (!selected) { allAnswered = false; return; }
+
+    const correct = q.dataset.answer;
+    const val = selected.dataset.val;
+    const fbs = q.querySelectorAll('.quiz-feedback');
+
+    q.querySelectorAll('.quiz-option').forEach(o => {
+      o.classList.add('locked');
+      if (o.dataset.val === correct) o.classList.add('correct');
+    });
+
+    if (val === correct) {
+      score++;
+      fbs[0].classList.add('show');
+    } else {
+      selected.classList.add('wrong');
+      fbs[1].classList.add('show');
+    }
+  });
+
+  if (!allAnswered) {
+    alert('Please answer all questions before submitting.');
+    return;
+  }
+
+  state.score = score;
+  state.submitted = true;
+
+  const btn = block.querySelector('.quiz-submit');
+  btn.disabled = true;
+  btn.textContent = 'Submitted';
+
+  const resultEl = document.getElementById(quizId + '-result');
+  resultEl.classList.add('show');
+  const pct = Math.round((score / state.total) * 100);
+  resultEl.innerHTML = `Score: <span class="score">${score} / ${state.total}</span> &nbsp;—&nbsp; ${pct}%`;
+
+  updateNavScore();
+  checkAllComplete();
+}
+
+// ── ALL COMPLETE ──────────────────────────────────
+function checkAllComplete() {
+  const allDone = Object.values(quizzes).every(q => q.submitted);
+  if (!allDone) return;
+
+  const total = getTotalScore();
+  const possible = getTotalPossible();
+  const pct = Math.round((total / possible) * 100);
+
+  const block = document.getElementById('final-score-block');
+  block.style.display = 'block';
+  document.getElementById('final-pct').textContent = pct + '%';
+  document.getElementById('final-fraction').textContent = `${total} / ${possible} correct`;
+
+  let msg = '';
+  if (pct >= 90) msg = "Exceptional. You understand not just the technology but the principle — capital is autonomy, and communities that control their financial infrastructure control their future.";
+  else if (pct >= 75) msg = "Strong work. You've grasped the connection between historical Black financial power and Bitcoin's potential as modern community infrastructure. Review the modules where you dropped points.";
+  else if (pct >= 60) msg = "Solid foundation. The core thesis is in place — revisit the sections on banking barriers and the community reserve structure to sharpen your understanding.";
+  else msg = "Keep studying. This material rewards deep engagement. Return to the modules on Chicago's case study and Bitcoin's structural characteristics — the historical and technical pieces connect to form the full picture.";
+
+  document.getElementById('final-msg').textContent = msg;
+  block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ── PROGRESS BAR ─────────────────────────────────
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// ── SCROLL TO SECTION ─────────────────────────────
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── CHAPTER DOT ACTIVE STATE ──────────────────────
+const sections = document.querySelectorAll('.section[id]');
+const dots = document.querySelectorAll('.chapter-dot');
+const sectionIds = Array.from(sections).map(s => s.id);
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY + 200;
+  let active = sectionIds[0];
+  sections.forEach(s => {
+    if (s.offsetTop <= scrollY) active = s.id;
+  });
+  dots.forEach((d, i) => {
+    const targetId = 's' + (i + 1);
+    d.classList.toggle('active', targetId === active);
+  });
+});
+
+// ── REVEAL ON SCROLL ──────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
